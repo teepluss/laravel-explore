@@ -2,7 +2,7 @@
     "name": "teepluss/explore",
     "description": "apidocjs explorer for Laravel",
     "keywords": ["Laravel, apidoc, apidocjs, api, explorer, console"],
-    "homepage": "https://github.com/teepluss/laravel4-apiconsole",
+    "homepage": "https://github.com/teepluss/laravel4-explore",
     "type": "library",
     "license": "MIT",
     "authors": [

@@ -30,7 +30,37 @@ class ExploreServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->registerExplore();
+
+		$this->registerFacade();
+	}
+
+	/**
+	 * Register explore.
+	 *
+	 * @return void
+	 */
+	protected function registerExplore()
+	{
+		$this->app['explore'] = $this->app->share(function($app)
+		{
+			return new Explore();
+		});
+	}
+
+	/**
+	 * Register facade.
+	 *
+	 * @return void
+	 */
+	protected function registerFacade()
+	{
+		$this->app->booting(function()
+		{
+			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
+
+			$loader->alias('Explore', 'Teepluss\Explore\Facades\Explore');
+		});
 	}
 
 	/**
@@ -40,7 +70,7 @@ class ExploreServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array('explore');
 	}
 
 }
