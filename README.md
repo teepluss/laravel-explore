@@ -2,6 +2,8 @@
 
 Explore is a RESTful explorer for [apiDoc](http://apidocjs.com/)
 
+![ScreenShot](https://raw.githubusercontent.com/teepluss/laravel4-explore/master/public/screenshots/sample.png)
+
 ### Installation
 
 - [Explore on Packagist](https://packagist.org/packages/teepluss/explore)
