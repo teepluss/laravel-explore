@@ -70,10 +70,16 @@ class ExploreController extends \Controller {
 
             $response = Explore::makeRequest($data['type'], Input::get('endpoint'), $values);
 
-            $response = Explore::prettyPrint($response);
+            $dataResponse = $response['response'];
+
+            try
+            {
+                $dataResponse = Explore::prettyPrint($dataResponse);
+            }
+            catch (\Exception $e) { }
         }
 
-        return View::make('explore::index', compact('data', 'response', 'offset'));
+        return View::make('explore::index', compact('data', 'dataResponse', 'offset'));
     }
 
 }

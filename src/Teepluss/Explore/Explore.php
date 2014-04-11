@@ -76,11 +76,14 @@ class Explore {
         // Response returned.
         $response = curl_exec($curl);
 
-        $status   = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         curl_close($curl);
 
-        return $response;
+        return array(
+            'httpCode' => $httpCode,
+            'response' => $response
+        );
     }
 
     /**
