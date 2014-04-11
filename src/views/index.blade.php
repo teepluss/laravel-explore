@@ -29,7 +29,7 @@
 </div>
 
 @if ($response)
-<pre>{{ $response }}</pre>
+<pre><code class="hljs json">{{ $response }}</code></pre>
 @endif
 
 @endsection
