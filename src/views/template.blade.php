@@ -10,6 +10,7 @@
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+        {{ HTML::style('//yandex.st/highlightjs/8.0/styles/default.min.css') }}
     </head>
     <header class="navbar navbar-default navbar-fixed-top" role="banner">
         <div class="container">
@@ -33,10 +34,18 @@
 
 
         {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}
+        {{ HTML::script('//yandex.st/highlightjs/8.0/highlight.min.js') }}
         {{ HTML::script('packages/teepluss/explore/bootstrap/js/bootstrap.min.js') }}
-
         {{ HTML::script('packages/teepluss/explore/scripts/inherit.js') }}
 
+        <script>
+        hljs.configure({tabReplace: '    '}); // 4 spaces
+        //hljs.initHighlightingOnLoad();
+
+        $(document).ready(function() {
+            $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+        });
+        </script>
 
     </body>
 </html>
