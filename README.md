@@ -35,11 +35,16 @@ php artisan asset:publish teepluss/explore
 
 ## Usage
 
-Set up tour config /app/config/packages/teepluss/explore/explore.php
+Set up your config
+~~~php
+/app/config/packages/teepluss/explore/explore.php
+~~~
 
-then
+then navigate to path
 
-go to /developers/explorer
+~~~php
+http://domain.com/developers/explorer
+~~~
 
 
 ## Support or Contact
