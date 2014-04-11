@@ -2,6 +2,8 @@
 
 return array(
 
+    'path'    => 'developers/explorer',
+
     'endpoint' => 'http://api.likeshopping.loc/v1',
 
     'prepends'   => array(
