@@ -16,7 +16,7 @@
                 <input type="text" class="form-control" name="fields[]" value="{{ $param['field'] }}">
             </div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="values[]" placeholder="{{ $param['description'] }}">
+                <input type="text" class="form-control" name="values[]" placeholder="{{ $param['description'] }}" value="{{ array_get($param, 'value') }}">
             </div>
         </div>
         @endforeach
@@ -29,7 +29,7 @@
 </div>
 
 @if ($response)
-{{ s($response) }}
+<pre>{{ $response }}</pre>
 @endif
 
 @endsection

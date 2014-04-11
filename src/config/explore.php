@@ -2,13 +2,14 @@
 
 return array(
 
-    'endpoint' => 'http://learn.loc/api',
+    'endpoint' => 'http://api.likeshopping.loc/v1',
 
     'prepends'   => array(
         array(
             'group'       => 'Parameter',
             'type'        => 'Number',
             'field'       => 'app_id',
+            'value'       => 1,
             'optional'    => false,
             'description' => 'Application ID'
         ),
@@ -16,6 +17,7 @@ return array(
             'group'       => 'Parameter',
             'type'        => 'String',
             'field'       => 'secret',
+            'value'       => '6d1zg7XY3IDxHLs45EfV42844usN9CVb',
             'optional'    => false,
             'description' => 'Application Secret'
         ),
@@ -23,6 +25,7 @@ return array(
             'group'       => 'Parameter',
             'type'        => 'String',
             'field'       => 'session_id',
+            'value'       => 'S2yS10SEmEL2KU0nnH4lt247/wTduuviVlsWA7nNtwuf5Ry.NlIV1.5zJXDm',
             'optional'    => true,
             'description' => 'Session ID'
         )
