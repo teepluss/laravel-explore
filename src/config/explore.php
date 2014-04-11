@@ -4,7 +4,7 @@ return array(
 
     'endpoint' => 'http://learn.loc/api',
 
-    'prepends'   => array(
+    'prepends' => array(
         array(
             'group'       => 'Parameter',
             'type'        => 'Number',
