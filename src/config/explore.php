@@ -2,7 +2,9 @@
 
 return array(
 
-    'path'    => 'developers/explorer',
+    'json'     => public_path().'/developers/api_data.json',
+
+    'path'     => 'developers/explorer',
 
     'endpoint' => 'http://api.likeshopping.loc/v1',
 
@@ -37,6 +39,6 @@ return array(
 
     'sidebar'  => 'explore::sidebar',
 
-    'json'     => public_path().'/developers/api_data.json'
+    'footer'   => 'explore::footer'
 
 );

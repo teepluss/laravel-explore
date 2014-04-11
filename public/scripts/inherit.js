@@ -29,4 +29,7 @@ $(document).ready(function() {
         }
     });
 
+    hljs.configure({tabReplace: '    '}); // 4 spaces
+    $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+
 });

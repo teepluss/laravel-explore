@@ -14,9 +14,19 @@ class ExploreController extends \Controller {
         }
 
         $json = File::get(Config::get('explore::explore.json'));
-        $this->json = json_decode($json, true);
 
-        View::share('json', $this->json);
+        $json = json_decode($json, true);
+
+        $this->json = $json;
+
+        $navigators = array();
+
+        foreach ($json as $j)
+        {
+            $navigators[$j['group']][] = $j;
+        }
+
+        View::share('navigators', $navigators);
     }
 
     public function index($offset = 0)
@@ -47,7 +57,7 @@ class ExploreController extends \Controller {
             $response = $this->prettyPrint($response);
         }
 
-        return View::make('explore::index', compact('data', 'response'));
+        return View::make('explore::index', compact('data', 'response', 'offset'));
     }
 
     /**

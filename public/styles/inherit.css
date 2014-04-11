@@ -1,5 +1,5 @@
 body {
-    padding-top:50px;
+    padding-top:70px;
 }
 
 #masthead {
@@ -48,8 +48,4 @@ body {
 #sidebar li.active {
     border:0 #eee solid;
     border-right-width:4px;
-}
-
-.container-x {
-    margin-top: 20px;
 }
