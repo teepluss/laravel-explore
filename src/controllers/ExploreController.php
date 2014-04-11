@@ -62,6 +62,12 @@ class ExploreController extends \Controller {
         $curl = curl_init();
         $data = http_build_query($data);
 
+        if (preg_match('/get/i', $method))
+        {
+            $url = strpos($url, '?') ? $url.'&'.$data : $url.'?'.$data;
+            $data = null;
+        }
+
         $curl_opts = array(
             CURLOPT_URL            => $url,
             CURLOPT_CUSTOMREQUEST  => strtoupper($method),
