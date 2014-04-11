@@ -6,17 +6,17 @@
         <div class="form-group">
             <label for="endpoint" class="col-sm-2 control-label">Endpoint</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="endpoint" name="endpoint" value="{{ Config::get('explore::explore.endpoint').$data['url'] }}">
+                {{ Form::text('endpoint', Input::get('endpoint', Config::get('explore::explore.endpoint').$data['url']), array('class' => 'form-control')) }}
             </div>
         </div>
 
-        @foreach ($data['parameter']['fields']['Parameter'] as $param)
+        @foreach ($data['parameter']['fields']['Parameter'] as $k => $param)
         <div class="form-group">
             <div class="col-xs-2">
-                <input type="text" class="form-control" name="fields[]" value="{{ $param['field'] }}">
+                {{ Form::text('fields[]', Input::get('fields.'.$k, $param['field']), array('class' => 'form-control')) }}
             </div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="values[]" placeholder="{{ $param['description'] }}">
+                {{ Form::text('values[]', Input::get('values.'.$k, array_get($param, 'value')), array('class' => 'form-control', 'placeholder' => $param['description'])) }}
             </div>
         </div>
         @endforeach
@@ -29,7 +29,7 @@
 </div>
 
 @if ($response)
-{{ s($response) }}
+<pre>{{ $response }}</pre>
 @endif
 
 @endsection
