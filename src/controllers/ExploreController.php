@@ -40,6 +40,7 @@ class ExploreController extends \Controller {
         if (Request::getMethod() == 'POST')
         {
             $values = array_combine(Input::get('fields'), Input::get('values'));
+            //$values = array_filter($values);
 
             $response = $this->makeRequest($data['type'], Input::get('endpoint'), $values);
 
@@ -62,16 +63,21 @@ class ExploreController extends \Controller {
         $curl = curl_init();
         $data = http_build_query($data);
 
+        $url = rtrim($url, '/');
+
         if (preg_match('/get/i', $method))
         {
             $url = strpos($url, '?') ? $url.'&'.$data : $url.'?'.$data;
             $data = null;
         }
 
+        s($method, $url, $data);
+
         $curl_opts = array(
             CURLOPT_URL            => $url,
             CURLOPT_CUSTOMREQUEST  => strtoupper($method),
             CURLOPT_POSTFIELDS     => $data,
+            CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER         => false,
             CURLOPT_SSL_VERIFYPEER => 2
@@ -90,6 +96,7 @@ class ExploreController extends \Controller {
 
         // Response returned.
         $response = curl_exec($curl);
+
         $status   = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         curl_close($curl);
