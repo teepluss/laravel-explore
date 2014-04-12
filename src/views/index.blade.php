@@ -32,7 +32,7 @@
     {{ Form::close() }}
 </div>
 
-@if ($dataResponse)
+@if (isset($dataResponse))
 <div class="row well">
     <pre><code class="hljs json">{{ $dataResponse }}</code></pre>
 </div>
