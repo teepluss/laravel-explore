@@ -6,18 +6,22 @@
     <fieldset>
     <legend>{{ $data['title'] }}</legend>
         <div class="form-group">
-            <label for="endpoint" class="col-sm-2 control-label">Endpoint</label>
-            <div class="col-sm-10">
-                {{ Form::text('endpoint', Input::get('endpoint', Config::get('explore::explore.endpoint').$data['url']), array('class' => 'form-control')) }}
+            <div class="col-sm-12">
+                {{
+                    Form::text('endpoint', Input::get('endpoint', Config::get('explore::explore.endpoint').$data['url']), array(
+                        'class' => 'form-control',
+                        'placeholder' => 'Endpoint URL'
+                    ))
+                }}
             </div>
         </div>
 
         @foreach ($data['parameter']['fields']['Parameter'] as $k => $param)
         <div class="form-group">
-            <div class="col-xs-2">
+            <div class="col-sm-3">
                 {{ Form::text('fields[]', Input::get('fields.'.$k, $param['field']), array('class' => 'form-control')) }}
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 {{ Form::text('values[]', Input::get('values.'.$k, array_get($param, 'value')), array('class' => 'form-control', 'placeholder' => $param['description'])) }}
             </div>
         </div>
