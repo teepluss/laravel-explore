@@ -30,17 +30,16 @@
                 </div>
             </div>
             @endforeach
-        </div>
-
-        <div class="form-group hidden">
-            <div class="col-sm-3">
-                {{ Form::text('fields[]', null, array('class' => 'form-control', 'disabled' => 'disabled'))}}
-            </div>
-            <div class="col-sm-8">
-                {{ Form::text('values[]', null, array('class' => 'form-control', 'disabled' => 'disabled')) }}
-            </div>
-            <div class="col-sm-1">
-                <a href="javascript:void(0)" class="add-node"><span class="glyphicon glyphicon-plus"></span></a>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    {{ Form::text('fields[]', null, array('class' => 'form-control')) }}
+                </div>
+                <div class="col-sm-8">
+                    {{ Form::text('values[]', null, array('class' => 'form-control')) }}
+                </div>
+                <div class="col-sm-1">
+                    <a href="javascript:void(0)" class="remove-node"><span class="glyphicon glyphicon-minus"></span></a>
+                </div>
             </div>
         </div>
 

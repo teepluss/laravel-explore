@@ -38,10 +38,6 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.availables .form-group:last input', function() {
-        $('.add-node').trigger('click');
-    });
-
-    $('.add-node').on('click', function() {
         $('.availables > .form-group:first').clone().find('input').val('').attr('placeholder', '').end().appendTo('.availables');
     });
 
