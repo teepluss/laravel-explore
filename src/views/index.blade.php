@@ -32,7 +32,7 @@
             @endforeach
         </div>
 
-        <div class="form-group">
+        <div class="form-group hidden">
             <div class="col-sm-3">
                 {{ Form::text('fields[]', null, array('class' => 'form-control', 'disabled' => 'disabled'))}}
             </div>

@@ -33,8 +33,12 @@ $(document).ready(function() {
     $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 
 
-    $('.remove-node').on('click', function() {
+    $('body').on('click', '.remove-node', function() {
         $(this).parents('.form-group:first').remove();
+    });
+
+    $('body').on('click', '.availables .form-group:last input', function() {
+        $('.add-node').trigger('click');
     });
 
     $('.add-node').on('click', function() {
