@@ -32,4 +32,13 @@ $(document).ready(function() {
     hljs.configure({tabReplace: '    '}); // 4 spaces
     $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 
+
+    $('.remove-node').on('click', function() {
+        $(this).parents('.form-group:first').remove();
+    });
+
+    $('.add-node').on('click', function() {
+        $('.availables > .form-group:first').clone().find('input').val('').attr('placeholder', '').end().appendTo('.availables');
+    });
+
 });

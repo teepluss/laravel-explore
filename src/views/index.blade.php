@@ -16,16 +16,34 @@
             </div>
         </div>
 
-        @foreach ($data['parameter']['fields']['Parameter'] as $k => $param)
+        <div class="availables">
+            @foreach ($data['parameter']['fields']['Parameter'] as $k => $param)
+            <div class="form-group">
+                <div class="col-sm-3">
+                    {{ Form::text('fields[]', Input::get('fields.'.$k, $param['field']), array('class' => 'form-control')) }}
+                </div>
+                <div class="col-sm-8">
+                    {{ Form::text('values[]', Input::get('values.'.$k, array_get($param, 'value')), array('class' => 'form-control', 'placeholder' => $param['description'])) }}
+                </div>
+                <div class="col-sm-1">
+                    <a href="javascript:void(0)" class="remove-node"><span class="glyphicon glyphicon-minus"></span></a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
         <div class="form-group">
             <div class="col-sm-3">
-                {{ Form::text('fields[]', Input::get('fields.'.$k, $param['field']), array('class' => 'form-control')) }}
+                {{ Form::text('fields[]', null, array('class' => 'form-control', 'disabled' => 'disabled'))}}
             </div>
-            <div class="col-sm-9">
-                {{ Form::text('values[]', Input::get('values.'.$k, array_get($param, 'value')), array('class' => 'form-control', 'placeholder' => $param['description'])) }}
+            <div class="col-sm-8">
+                {{ Form::text('values[]', null, array('class' => 'form-control', 'disabled' => 'disabled')) }}
+            </div>
+            <div class="col-sm-1">
+                <a href="javascript:void(0)" class="add-node"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         </div>
-        @endforeach
+
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="reset" class="btn btn-default">Reset</button>

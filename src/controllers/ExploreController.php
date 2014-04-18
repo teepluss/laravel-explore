@@ -66,9 +66,21 @@ class ExploreController extends \Controller {
 
         if (Request::getMethod() == 'POST')
         {
-            $values = array_combine(Input::get('fields'), Input::get('values'));
+            $fields = Input::get('fields');
+            $values = Input::get('values');
 
-            $response = Explore::makeRequest($data['type'], Input::get('endpoint'), $values);
+            $params = array();
+
+            if (count($fields)) foreach ($fields as $i => $field)
+            {
+                $field = trim($field);
+
+                if ( ! $field) continue;
+
+                $params[$field] = $values[$i];
+            }
+
+            $response = Explore::makeRequest($data['type'], Input::get('endpoint'), $params);
 
             $dataResponse = $response['response'];
 
