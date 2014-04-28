@@ -52,8 +52,14 @@ class ExploreController extends \Controller {
      * @param  integer $offset
      * @return string
      */
-    public function index($offset = 0)
+    public function index($offset = null)
     {
+        if (is_null($offset))
+        {
+            reset($this->json);
+            $offset = key($this->json);
+        }
+
         $data = $this->json[$offset];
 
         $response = null;
