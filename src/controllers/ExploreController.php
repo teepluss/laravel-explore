@@ -28,14 +28,20 @@ class ExploreController extends \Controller {
         $json = File::get(Config::get('explore::explore.json'));
         $json = json_decode($json, true);
 
-        $this->json = $json;
+        $jsonData = array();
 
         // Sidebar navigator.
         $navigators = array();
         foreach ($json as $j)
         {
-            $navigators[$j['group']][] = $j;
+            $index = $j['type'].'-'.$j['name'];
+
+            $navigators[$j['group']][$index] = $j;
+
+            $jsonData[$index] = $j;
         }
+
+        $this->json = $jsonData;
 
         View::share('navigators', $navigators);
     }
