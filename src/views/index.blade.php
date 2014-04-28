@@ -26,19 +26,19 @@
                     {{ Form::text('values[]', Input::get('values.'.$k, array_get($param, 'value')), array('class' => 'form-control', 'placeholder' => $param['description'])) }}
                 </div>
                 <div class="col-sm-1">
-                    <a href="javascript:void(0)" class="remove-node"><span class="glyphicon glyphicon-minus"></span></a>
+                    <a href="javascript:void(0)" class="remove-node" tabindex="-1"><span class="glyphicon glyphicon-minus"></span></a>
                 </div>
             </div>
             @endforeach
             <div class="form-group">
                 <div class="col-sm-3">
-                    {{ Form::text('fields[]', null, array('class' => 'form-control')) }}
+                    {{ Form::text('fields[]', null, array('class' => 'form-control', 'placeholder' => 'Key')) }}
                 </div>
                 <div class="col-sm-8">
-                    {{ Form::text('values[]', null, array('class' => 'form-control')) }}
+                    {{ Form::text('values[]', null, array('class' => 'form-control', 'placeholder' => 'Value')) }}
                 </div>
                 <div class="col-sm-1">
-                    <a href="javascript:void(0)" class="remove-node"><span class="glyphicon glyphicon-minus"></span></a>
+                    <a href="javascript:void(0)" class="remove-node" tabindex="-1"><span class="glyphicon glyphicon-minus"></span></a>
                 </div>
             </div>
         </div>

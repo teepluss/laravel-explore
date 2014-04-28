@@ -38,7 +38,10 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.availables .form-group:last input', function() {
-        $('.availables > .form-group:first').clone().find('input').val('').attr('placeholder', '').end().appendTo('.availables');
+        $('.availables > .form-group:first').clone()
+                                            .find('input:eq(0)').val('').attr('placeholder', 'Key').end()
+                                            .find('input:eq(1)').val('').attr('placeholder', 'Value').end()
+                                            .appendTo('.availables');
     });
 
 });
