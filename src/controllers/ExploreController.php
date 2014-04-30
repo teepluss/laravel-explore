@@ -67,13 +67,23 @@ class ExploreController extends \Controller {
         if (isset($data['parameter']['fields']['Parameter']))
         {
             $data['parameter']['fields']['Parameter'] = array_merge(
-                Config::get('explore::explore.prepends'),
+                (array) Config::get('explore::explore.prepends'),
                 $data['parameter']['fields']['Parameter']
+            );
+
+            $data['parameter']['fields']['Parameter'] = array_merge(
+                $data['parameter']['fields']['Parameter'],
+                (array) Config::get('explore::explore.appends')
             );
         }
         else
         {
-            $data['parameter']['fields']['Parameter'] = Config::get('explore::explore.prepends');
+            $data['parameter']['fields']['Parameter'] = (array) Config::get('explore::explore.prepends');
+
+            $data['parameter']['fields']['Parameter'] = array_merge(
+                $data['parameter']['fields']['Parameter'],
+                (array) Config::get('explore::explore.appends')
+            );
         }
 
         if (Request::getMethod() == 'POST')
