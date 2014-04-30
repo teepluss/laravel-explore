@@ -1,6 +1,7 @@
 ## Laravel RESTful explorer.
 
 Explore is a RESTful explorer for [apiDoc](http://apidocjs.com/)
+> This package will work after apiDoc installed.
 
 ![ScreenShot](https://raw.githubusercontent.com/teepluss/laravel4-explore/master/public/screenshots/sample.png)
 
