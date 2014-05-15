@@ -104,7 +104,7 @@ class ExploreController extends \Controller {
 
             $response = Explore::makeRequest($data['type'], Input::get('endpoint'), $params);
 
-            $dataResponse = $response['response'];
+            $dataResponse = htmlspecialchars($response['response']);
 
             try
             {
