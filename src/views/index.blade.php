@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row container-x well">
-    {{ Form::open(array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form')) }}
+    {{ Form::open(array('url' => URL::route('explore.request', array('id' => $offset)), 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'target' => 'response')) }}
     <fieldset>
     <legend>{{ $data['title'] }}</legend>
         <div class="form-group">
@@ -53,10 +53,8 @@
     {{ Form::close() }}
 </div>
 
-@if (isset($dataResponse))
-<div class="row well">
-    <pre><code class="hljs json">{{ $dataResponse }}</code></pre>
+<div class="row response">
+    <iframe name="response" id="iframe1" src="{{ URL::route('explore.request', array('id' => $offset)) }}" width="100%" marginheight="0" frameborder="0" onLoad="autoResize('iframe1');"></iframe>
 </div>
-@endif
 
 @endsection

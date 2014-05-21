@@ -1,6 +1,6 @@
 <?php namespace Teepluss\Explore;
 
-use API, Config, Explore, File, Input, View, Request;
+use API, Config, Explore, File, Input, View, Request, Route;
 
 class ExploreController extends \Controller {
 
@@ -62,8 +62,6 @@ class ExploreController extends \Controller {
 
         $data = $this->json[$offset];
 
-        $response = null;
-
         if (isset($data['parameter']['fields']['Parameter']))
         {
             $data['parameter']['fields']['Parameter'] = array_merge(
@@ -86,12 +84,21 @@ class ExploreController extends \Controller {
             );
         }
 
+        return View::make('explore::index', compact('data', 'offset'));
+    }
+
+    public function request($offset = null)
+    {
+        $dataResponse = null;
+
         if (Request::getMethod() == 'POST')
         {
             $fields = Input::get('fields');
             $values = Input::get('values');
 
             $params = array();
+
+            $data = $this->json[$offset];
 
             if (count($fields)) foreach ($fields as $i => $field)
             {
@@ -104,16 +111,18 @@ class ExploreController extends \Controller {
 
             $response = Explore::makeRequest($data['type'], Input::get('endpoint'), $params);
 
-            $dataResponse = htmlspecialchars($response['response']);
+            // $dataResponse = htmlspecialchars($response['response']);
 
-            try
-            {
-                $dataResponse = Explore::prettyPrint($dataResponse);
-            }
-            catch (\Exception $e) { }
+            // try
+            // {
+            //     $dataResponse = Explore::prettyPrint($dataResponse);
+            // }
+            // catch (\Exception $e) { }
+
+            $dataResponse = $response['response'];
         }
 
-        return View::make('explore::index', compact('data', 'dataResponse', 'offset'));
+        return View::make('explore::request', compact('dataResponse'));
     }
 
 }
