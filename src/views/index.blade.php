@@ -4,7 +4,7 @@
 <div class="row container-x well">
     {{ Form::open(array('url' => URL::route('explore.request', array('id' => $offset)), 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'target' => 'response')) }}
     <fieldset>
-    <legend>{{ $data['title'] }}</legend>
+    <legend>{{ array_get($data, 'title', 'Undefined') }}</legend>
         <div class="form-group">
             <div class="col-sm-12">
                 {{

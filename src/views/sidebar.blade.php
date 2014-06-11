@@ -6,7 +6,7 @@
     <div class="list-group">
         @foreach ($navs as $i => $v)
         <a href="{{ URL::route('explore.index.get', array('id' => $i)) }}" class="list-group-item @if ($i == $offset) active @endif">
-            {{ $v['title'] }}
+            {{ array_get($v, 'title', 'Undefined') }}
         </a>
         @endforeach
     </div>

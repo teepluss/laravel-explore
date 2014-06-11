@@ -30,6 +30,22 @@ class ExploreController extends \Controller {
 
         $jsonData = array();
 
+        // Re-array structure.
+        foreach ($json as $i => $j)
+        {
+            if (isset($j['parameter']) and count($j['parameter']['fields']) > 1)
+            {
+                $parameters = array();
+
+                foreach ($j['parameter']['fields'] as $fields)
+                {
+                    $parameters = array_merge($parameters, $fields);
+                }
+
+                $json[$i]['parameter']['fields'] = array('Parameter' => $parameters);
+            }
+        }
+
         // Sidebar navigator.
         $navigators = array();
         foreach ($json as $j)
