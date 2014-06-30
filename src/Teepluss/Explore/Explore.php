@@ -1,6 +1,7 @@
 <?php namespace Teepluss\Explore;
 
 use HTML;
+use Exception;
 
 class Explore {
 
@@ -50,8 +51,6 @@ class Explore {
             $data = null;
         }
 
-        //s($method, $url, $data);
-
         $curl_opts = array(
             CURLOPT_URL            => $url,
             CURLOPT_CUSTOMREQUEST  => strtoupper($method),
@@ -59,7 +58,8 @@ class Explore {
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER         => false,
-            CURLOPT_SSL_VERIFYPEER => 2
+            CURLOPT_SSL_VERIFYPEER => 2,
+            CURLOPT_ENCODING       => ''
         );
 
         // Override or extend curl options
@@ -72,6 +72,7 @@ class Explore {
         }
 
         curl_setopt_array($curl, $curl_opts);
+
 
         // Response returned.
         $response = curl_exec($curl);
@@ -93,63 +94,63 @@ class Explore {
      * @param  bool $html Insert nonbreaking spaces and <br />s for tabs and linebreaks
      * @return string The prettified output
      */
-    function prettyPrint($json, $html = false)
-    {
-        $tabcount   = 0;
-        $result     = '';
-        $inquote    = false;
-        $ignorenext = false;
+    // function prettyPrint($json, $html = false)
+    // {
+    //     $tabcount   = 0;
+    //     $result     = '';
+    //     $inquote    = false;
+    //     $ignorenext = false;
 
-        if ($html)
-        {
-            $tab = "&nbsp;&nbsp;&nbsp;";
-            $newline = "<br/>";
-        }
-        else
-        {
-            $tab = "\t";
-            $newline = "\n";
-        }
+    //     if ($html)
+    //     {
+    //         $tab = "&nbsp;&nbsp;&nbsp;";
+    //         $newline = "<br/>";
+    //     }
+    //     else
+    //     {
+    //         $tab = "\t";
+    //         $newline = "\n";
+    //     }
 
-        for ($i = 0; $i < strlen($json); $i++)
-        {
-            $char = $json[$i];
+    //     for ($i = 0; $i < strlen($json); $i++)
+    //     {
+    //         $char = $json[$i];
 
-            if ($ignorenext)
-            {
-                $result .= $char;
-                $ignorenext = false;
-            }
-            else
-            {
-                switch ($char)
-                {
-                    case '{':
-                        $tabcount++;
-                        $result .= $char . $newline . str_repeat($tab, $tabcount);
-                        break;
-                    case '}':
-                        $tabcount--;
-                        $result = trim($result) . $newline . str_repeat($tab, $tabcount) . $char;
-                        break;
-                    case ',':
-                        $result .= $char . $newline . str_repeat($tab, $tabcount);
-                        break;
-                    case '"':
-                        $inquote = !$inquote;
-                        $result .= $char;
-                        break;
-                    case '\\':
-                        if ($inquote) $ignorenext = true;
-                        $result .= $char;
-                        break;
-                    default:
-                        $result .= $char;
-                }
-            }
-        }
+    //         if ($ignorenext)
+    //         {
+    //             $result .= $char;
+    //             $ignorenext = false;
+    //         }
+    //         else
+    //         {
+    //             switch ($char)
+    //             {
+    //                 case '{':
+    //                     $tabcount++;
+    //                     $result .= $char . $newline . str_repeat($tab, $tabcount);
+    //                     break;
+    //                 case '}':
+    //                     $tabcount--;
+    //                     $result = trim($result) . $newline . str_repeat($tab, $tabcount) . $char;
+    //                     break;
+    //                 case ',':
+    //                     $result .= $char . $newline . str_repeat($tab, $tabcount);
+    //                     break;
+    //                 case '"':
+    //                     $inquote = !$inquote;
+    //                     $result .= $char;
+    //                     break;
+    //                 case '\\':
+    //                     if ($inquote) $ignorenext = true;
+    //                     $result .= $char;
+    //                     break;
+    //                 default:
+    //                     $result .= $char;
+    //             }
+    //         }
+    //     }
 
-        return $result;
-    }
+    //     return $result;
+    // }
 
 }

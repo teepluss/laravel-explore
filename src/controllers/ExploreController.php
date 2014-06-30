@@ -135,7 +135,7 @@ class ExploreController extends \Controller {
             // }
             // catch (\Exception $e) { }
 
-            $dataResponse = $response['response'];
+            $dataResponse = $response;
         }
 
         return View::make('explore::request', compact('dataResponse'));

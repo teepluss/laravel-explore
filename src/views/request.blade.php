@@ -12,7 +12,7 @@
         </style>
     </head>
     <body>
-        <div id="json"></div>
+        <div id="json">@if ($dataResponse['httpCode'] != 200) {{ $dataResponse['response'] }} @endif</div>
 
 
         {{ Explore::script('scripts/jquery.min.js') }}
@@ -22,7 +22,7 @@
         {{ Explore::script('scripts/inherit.js') }}
 
         <script>
-            var json = {{ $dataResponse }}
+            var json = {{ $dataResponse['response'] }}
 
             $(function() {
                 $("#json").JSONView(json);
