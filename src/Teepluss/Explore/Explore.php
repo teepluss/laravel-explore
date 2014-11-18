@@ -88,69 +88,51 @@ class Explore {
     }
 
     /**
-     * Formats a JSON string for pretty printing
+     * Checks if string is valid json.
      *
-     * @param  string $json The JSON to make pretty
-     * @param  bool $html Insert nonbreaking spaces and <br />s for tabs and linebreaks
-     * @return string The prettified output
+     * @param $string
+     * @return bool
+     * @author Andreas Glaser
      */
-    // function prettyPrint($json, $html = false)
-    // {
-    //     $tabcount   = 0;
-    //     $result     = '';
-    //     $inquote    = false;
-    //     $ignorenext = false;
-
-    //     if ($html)
-    //     {
-    //         $tab = "&nbsp;&nbsp;&nbsp;";
-    //         $newline = "<br/>";
-    //     }
-    //     else
-    //     {
-    //         $tab = "\t";
-    //         $newline = "\n";
-    //     }
-
-    //     for ($i = 0; $i < strlen($json); $i++)
-    //     {
-    //         $char = $json[$i];
-
-    //         if ($ignorenext)
-    //         {
-    //             $result .= $char;
-    //             $ignorenext = false;
-    //         }
-    //         else
-    //         {
-    //             switch ($char)
-    //             {
-    //                 case '{':
-    //                     $tabcount++;
-    //                     $result .= $char . $newline . str_repeat($tab, $tabcount);
-    //                     break;
-    //                 case '}':
-    //                     $tabcount--;
-    //                     $result = trim($result) . $newline . str_repeat($tab, $tabcount) . $char;
-    //                     break;
-    //                 case ',':
-    //                     $result .= $char . $newline . str_repeat($tab, $tabcount);
-    //                     break;
-    //                 case '"':
-    //                     $inquote = !$inquote;
-    //                     $result .= $char;
-    //                     break;
-    //                 case '\\':
-    //                     if ($inquote) $ignorenext = true;
-    //                     $result .= $char;
-    //                     break;
-    //                 default:
-    //                     $result .= $char;
-    //             }
-    //         }
-    //     }
-
-    //     return $result;
-    // }
+    function isJson($string)
+    {
+        // make sure provided input is of type string
+        if (!is_string($string)) {
+            return false;
+        }
+     
+        // trim white spaces
+        $string = trim($string);
+     
+        // get first character
+        $firstChar = substr($string, 0, 1);
+     
+        // get last character
+        $lastChar = substr($string, -1);
+     
+        // check if there is a first and last character
+        if (!$firstChar || !$lastChar) {
+            return false;
+        }
+     
+        // make sure first character is either { or [
+        if ($firstChar !== '{' && $firstChar !== '[') {
+            return false;
+        }
+     
+        // make sure last character is either } or ]
+        if ($lastChar !== '}' && $lastChar !== ']') {
+            return false;
+        }
+     
+        // let's leave the rest to PHP.
+        // try to decode string
+        json_decode($string);
+     
+        // check if error occurred
+        $isValid = json_last_error() === JSON_ERROR_NONE;
+     
+        return $isValid;
+    }
 
 }

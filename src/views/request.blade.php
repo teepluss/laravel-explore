@@ -12,7 +12,9 @@
         </style>
     </head>
     <body>
-        <div id="json">@if ($dataResponse['httpCode'] != 200) {{ $dataResponse['response'] }} @endif</div>
+        <div id="json">
+            @if ($dataResponse['httpCode'] != 200 or ! Explore::isJson($dataResponse['response'])) {{ $dataResponse['response'] }} @endif
+        </div>
 
 
         {{ Explore::script('scripts/jquery.min.js') }}
