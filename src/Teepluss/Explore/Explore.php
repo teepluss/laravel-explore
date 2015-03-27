@@ -71,8 +71,14 @@ class Explore {
             }
         }
 
-        curl_setopt_array($curl, $curl_opts);
+        // Suppoert https request.
+        if (preg_match('/^https/', $url))
+        {
+            $curl_opts[CURLOPT_SSL_VERIFYHOST] = 0;
+            $curl_opts[CURLOPT_SSL_VERIFYPEER] = 0;
+        }
 
+        curl_setopt_array($curl, $curl_opts);
 
         // Response returned.
         $response = curl_exec($curl);
@@ -100,38 +106,38 @@ class Explore {
         if (!is_string($string)) {
             return false;
         }
-     
+
         // trim white spaces
         $string = trim($string);
-     
+
         // get first character
         $firstChar = substr($string, 0, 1);
-     
+
         // get last character
         $lastChar = substr($string, -1);
-     
+
         // check if there is a first and last character
         if (!$firstChar || !$lastChar) {
             return false;
         }
-     
+
         // make sure first character is either { or [
         if ($firstChar !== '{' && $firstChar !== '[') {
             return false;
         }
-     
+
         // make sure last character is either } or ]
         if ($lastChar !== '}' && $lastChar !== ']') {
             return false;
         }
-     
+
         // let's leave the rest to PHP.
         // try to decode string
         json_decode($string);
-     
+
         // check if error occurred
         $isValid = json_last_error() === JSON_ERROR_NONE;
-     
+
         return $isValid;
     }
 
