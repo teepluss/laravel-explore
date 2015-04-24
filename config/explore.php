@@ -12,7 +12,7 @@ return array(
     |
     */
 
-    'json'     => public_path().'/developers/api_data.json',
+    'json' => public_path().'/developers/api_data.json',
 
     /*
     |--------------------------------------------------------------------------
@@ -57,24 +57,24 @@ return array(
     |
     */
 
-    'prepends' => array(
-        array(
+    'prepends' => [
+        [
             'group'       => 'Parameter',
             'type'        => 'Number',
             'field'       => 'app_id',
             'value'       => 1,
             'optional'    => false,
             'description' => 'Application ID'
-        ),
-        array(
+        ],
+        [
             'group'       => 'Parameter',
             'type'        => 'String',
             'field'       => 'secret',
             'value'       => '0dL1zg7XY3IDxHLs45EfV42645usN9CFb',
             'optional'    => false,
             'description' => 'Application Secret'
-        )
-    ),
+        ]
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -85,7 +85,7 @@ return array(
     |
     */
 
-    'appends'  => array(),
+    'appends'  => [],
 
     /*
     |--------------------------------------------------------------------------

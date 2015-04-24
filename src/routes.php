@@ -1,6 +1,6 @@
 <?php
 
-$config = Config::get('explore::explore');
+$config = Config::get('explore');
 
 $path = $config['path'];
 $filter = array_get($config, 'filter', '');

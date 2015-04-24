@@ -1,9 +1,11 @@
 ## Laravel RESTful explorer.
 
+### For Laravel 4, please use the [v1.x branch](https://github.com/teepluss/laravel-explore/tree/v1.x)!
+
 Explore is a RESTful explorer for [apiDoc](http://apidocjs.com/)
 > This package will work after apiDoc installed.
 
-![ScreenShot](https://raw.githubusercontent.com/teepluss/laravel4-explore/master/public/screenshots/sample.png)
+![ScreenShot](https://raw.githubusercontent.com/teepluss/laravel-explore/master/public/screenshots/sample.png)
 
 ### Installation
 
@@ -20,20 +22,18 @@ You'll then need to run `composer install` to download it and have the autoloade
 
 Once Theme is installed you need to register the service provider with the application. Open up `app/config/app.php` and find the `providers` key.
 
-~~~
-'providers' => array(
-
+~~~json
+'providers' => [
+    ...
     'Teepluss\Explore\ExploreServiceProvider'
 
-)
+]
 ~~~
 
 Publish config and asset using artisan CLI.
 
-~~~
-php artisan config:publish teepluss/explore
-
-php artisan asset:publish teepluss/explore
+~~~shell
+php artisan vendor:publish --provider="Teepluss\Explore\ExploreServiceProvider"
 ~~~
 
 ## Usage

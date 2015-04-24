@@ -1,5 +1,6 @@
 <?php namespace Teepluss\Explore;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
 class ExploreServiceProvider extends ServiceProvider {
@@ -18,9 +19,15 @@ class ExploreServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('teepluss/explore');
+		$configPath = __DIR__.'/../config/explore.php';
+		$publicPath = __DIR__.'/../public';
 
-		include __DIR__.'/../../routes.php';
+		$this->publishes([
+			$configPath => config_path('explore.php'),
+            $publicPath => base_path('public/packages/teepluss/explore'),
+		]);
+
+		include __DIR__.'/routes.php';
 	}
 
 	/**
@@ -42,7 +49,7 @@ class ExploreServiceProvider extends ServiceProvider {
 	 */
 	protected function registerExplore()
 	{
-		$this->app['explore'] = $this->app->share(function($app)
+		$this->app->singleton('explore', function($app)
 		{
 			return new Explore();
 		});
@@ -57,7 +64,7 @@ class ExploreServiceProvider extends ServiceProvider {
 	{
 		$this->app->booting(function()
 		{
-			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
+			$loader = AliasLoader::getInstance();
 
 			$loader->alias('Explore', 'Teepluss\Explore\Facades\Explore');
 		});

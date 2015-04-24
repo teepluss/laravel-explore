@@ -1,8 +1,9 @@
 <?php namespace Teepluss\Explore;
 
-use API, Config, Explore, File, Input, View, Request, Route;
+use Illuminate\Routing\Controller;
+use Config, Explore, File, Input, View, Request, Route;
 
-class ExploreController extends \Controller {
+class ExploreController extends Controller {
 
     /**
      * Json data.
