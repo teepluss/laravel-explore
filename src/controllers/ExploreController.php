@@ -19,14 +19,16 @@ class ExploreController extends Controller {
      */
     public function __construct()
     {
+        $config = Config::get('explore');
+
         // Checking json file.
-        if ( ! File::exists(Config::get('explore::explore.json')))
+        if ( ! File::exists($config['json']))
         {
-            throw new FileNotFoundException('JSON is not exists.');
+            throw new FileNotFoundException('apidoc json data not found.');
         }
 
         // Decoding json.
-        $json = File::get(Config::get('explore::explore.json'));
+        $json = File::get($config['json']);
         $json = json_decode($json, true);
 
         $jsonData = array();

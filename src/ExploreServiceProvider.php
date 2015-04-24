@@ -21,11 +21,14 @@ class ExploreServiceProvider extends ServiceProvider {
 	{
 		$configPath = __DIR__.'/../config/explore.php';
 		$publicPath = __DIR__.'/../public';
+		$viewerPath = __DIR__.'/views';
 
 		$this->publishes([
 			$configPath => config_path('explore.php'),
             $publicPath => base_path('public/packages/teepluss/explore'),
 		]);
+
+		$this->loadViewsFrom($viewerPath, 'explore');
 
 		include __DIR__.'/routes.php';
 	}
