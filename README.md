@@ -3,12 +3,12 @@
 Explore is a RESTful explorer for [apiDoc](http://apidocjs.com/)
 > This package will work after apiDoc installed.
 
-![ScreenShot](https://raw.githubusercontent.com/teepluss/laravel4-explore/master/public/screenshots/sample.png)
+![ScreenShot](https://raw.githubusercontent.com/teepluss/laravel-explore/master/public/screenshots/sample.png)
 
 ### Installation
 
 - [Explore on Packagist](https://packagist.org/packages/teepluss/explore)
-- [Explore on GitHub](https://github.com/teepluss/laravel4-explore)
+- [Explore on GitHub](https://github.com/teepluss/laravel-explore)
 
 To get the lastest version of Theme simply require it in your `composer.json` file.
 
