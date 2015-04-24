@@ -13,7 +13,7 @@ Explore is a RESTful explorer for [apiDoc](http://apidocjs.com/)
 To get the lastest version of Theme simply require it in your `composer.json` file.
 
 ~~~
-"teepluss/explore": "dev-master"
+"teepluss/explore": "1.*@dev"
 ~~~
 
 You'll then need to run `composer install` to download it and have the autoloader updated.
