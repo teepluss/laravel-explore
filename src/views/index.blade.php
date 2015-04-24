@@ -1,20 +1,15 @@
-@extends(Config::get('explore::explore.template'))
+@extends(Config::get('explore.template'))
 
 @section('content')
 <div class="row container-x well">
-    {{ Form::open(array('url' => URL::route('explore.request', array('id' => $offset)), 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'target' => 'response')) }}
+    <form method="post" action="{{ URL::route('explore.request', array('id' => $offset)) }}" class="form-horizontal" role="form" target="response">
     <fieldset>
     <legend>
         <span style="text-transform:uppercase;">{{ $data['type'] }}</span> : {{ array_get($data, 'title', 'Undefined') }}
     </legend>
         <div class="form-group">
             <div class="col-sm-12">
-                {{
-                    Form::text('endpoint', Input::get('endpoint', Config::get('explore::explore.endpoint').$data['url']), array(
-                        'class' => 'form-control',
-                        'placeholder' => 'Endpoint URL'
-                    ))
-                }}
+                <input type="text" name="endpoint" value="{{ Input::get('endpoint', Config::get('explore.endpoint').$data['url']) }}" class="form-control" placeholder="Api Enpoint URL">
             </div>
         </div>
 
@@ -22,10 +17,10 @@
             @foreach ($data['parameter']['fields']['Parameter'] as $k => $param)
             <div class="form-group">
                 <div class="col-sm-3">
-                    {{ Form::text('fields[]', Input::get('fields.'.$k, $param['field']), array('class' => 'form-control')) }}
+                    <input type="text" name="fields[]" value="{{ Input::get('fields.'.$k, $param['field']) }}" class="form-control">
                 </div>
                 <div class="col-sm-8">
-                    {{ Form::text('values[]', Input::get('values.'.$k, array_get($param, 'value')), array('class' => 'form-control', 'placeholder' => strip_tags($param['description']))) }}
+                    <input type="text" name="values[]" value="{{ Input::get('values.'.$k, array_get($param, 'value')) }}" class="form-control" placeholder="{{ strip_tags($param['description']) }}">
                 </div>
                 <div class="col-sm-1">
                     <a href="javascript:void(0)" class="remove-node" tabindex="-1"><span class="glyphicon glyphicon-minus"></span></a>
@@ -34,10 +29,10 @@
             @endforeach
             <div class="form-group">
                 <div class="col-sm-3">
-                    {{ Form::text('fields[]', null, array('class' => 'form-control', 'placeholder' => 'Key')) }}
+                    <input type="text" name="fields[]" class="form-control" placeholder="key">
                 </div>
                 <div class="col-sm-8">
-                    {{ Form::text('values[]', null, array('class' => 'form-control', 'placeholder' => 'Value')) }}
+                    <input type="text" name="values[]" class="form-control" placeholder="value">
                 </div>
                 <div class="col-sm-1">
                     <a href="javascript:void(0)" class="remove-node" tabindex="-1"><span class="glyphicon glyphicon-minus"></span></a>
@@ -47,12 +42,13 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button type="reset" class="btn btn-default">Reset</button>
                 <button type="submit" class="btn btn-primary">Request</button>
             </div>
         </div>
     </fieldset>
-    {{ Form::close() }}
+    </form>
 </div>
 
 <div class="row response">

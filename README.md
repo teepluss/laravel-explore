@@ -10,7 +10,7 @@ Explore is a RESTful explorer for [apiDoc](http://apidocjs.com/)
 ### Installation
 
 - [Explore on Packagist](https://packagist.org/packages/teepluss/explore)
-- [Explore on GitHub](https://github.com/teepluss/laravel4-explore)
+- [Explore on GitHub](https://github.com/teepluss/laravel-explore)
 
 To get the lastest version of Theme simply require it in your `composer.json` file.
 
@@ -20,7 +20,7 @@ To get the lastest version of Theme simply require it in your `composer.json` fi
 
 You'll then need to run `composer install` to download it and have the autoloader updated.
 
-Once Theme is installed you need to register the service provider with the application. Open up `app/config/app.php` and find the `providers` key.
+Once Theme is installed you need to register the service provider with the application. Open up `config/app.php` and find the `providers` key.
 
 ~~~json
 'providers' => [
@@ -40,7 +40,7 @@ php artisan vendor:publish --provider="Teepluss\Explore\ExploreServiceProvider"
 
 Set up your config
 ~~~php
-/app/config/packages/teepluss/explore/explore.php
+config/explore.php
 ~~~
 
 then navigate to path

@@ -12,9 +12,9 @@ class Explore {
      * @param  array  $attributes
      * @return string
      */
-    public function style($url, $attributes = array())
+    public function style($url)
     {
-        return HTML::style('packages/teepluss/explore/'. $url, $attributes);
+        return '<link rel="stylesheet" href="'.asset('packages/teepluss/explore/'. $url).'">';
     }
 
     /**
@@ -24,9 +24,9 @@ class Explore {
      * @param  array  $attributes
      * @return string
      */
-    public function script($url, $attributes = array())
+    public function script($url)
     {
-        return HTML::script('packages/teepluss/explore/'. $url, $attributes);
+        return '<script src="'.asset('packages/teepluss/explore/'. $url).'"></script>';
     }
 
     /**
