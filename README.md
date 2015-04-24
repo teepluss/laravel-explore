@@ -22,7 +22,7 @@ You'll then need to run `composer install` to download it and have the autoloade
 
 Once Theme is installed you need to register the service provider with the application. Open up `config/app.php` and find the `providers` key.
 
-~~~json
+~~~
 'providers' => [
     ...
     'Teepluss\Explore\ExploreServiceProvider'
