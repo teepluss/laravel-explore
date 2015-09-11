@@ -84,22 +84,22 @@ class ExploreController extends Controller {
         if (isset($data['parameter']['fields']['Parameter']))
         {
             $data['parameter']['fields']['Parameter'] = array_merge(
-                (array) Config::get('explore::explore.prepends'),
+                (array) Config::get('explore.prepends'),
                 $data['parameter']['fields']['Parameter']
             );
 
             $data['parameter']['fields']['Parameter'] = array_merge(
                 $data['parameter']['fields']['Parameter'],
-                (array) Config::get('explore::explore.appends')
+                (array) Config::get('explore.appends')
             );
         }
         else
         {
-            $data['parameter']['fields']['Parameter'] = (array) Config::get('explore::explore.prepends');
+            $data['parameter']['fields']['Parameter'] = (array) Config::get('explore.prepends');
 
             $data['parameter']['fields']['Parameter'] = array_merge(
                 $data['parameter']['fields']['Parameter'],
-                (array) Config::get('explore::explore.appends')
+                (array) Config::get('explore.appends')
             );
         }
 
