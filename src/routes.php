@@ -14,12 +14,12 @@ if ( ! is_null($middleware))
 
 Route::group($group, function() use ($path)
 {
-    Route::match(['GET', 'POST'], '/'.$path.'/request/{id?}', [
+    Route::match(['GET', 'POST'], '/'.$path.'/request/{offset?}', [
         'as'   => 'explore.request',
         'uses' => 'Teepluss\Explore\ExploreController@request'
     ]);
 
-    Route::get('/'.$path.'/{id?}', [
+    Route::get('/'.$path.'/{offset?}', [
         'as'   => 'explore.index.get',
         'uses' => 'Teepluss\Explore\ExploreController@index'
     ]);
