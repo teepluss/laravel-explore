@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Controller;
 use Config, Explore, File, Input, View, Request, Route;
+use Illuminate\Support\Facades\Input;
 
 class ExploreController extends Controller {
 
