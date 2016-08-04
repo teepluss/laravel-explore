@@ -9,7 +9,7 @@
     </legend>
         <div class="form-group">
             <div class="col-sm-12">
-                <input type="text" name="endpoint" value="{{ Input::get('endpoint', Config::get('explore.endpoint').$data['url']) }}" class="form-control" placeholder="Api Enpoint URL">
+                <input type="text" name="endpoint" value="{{ Illuminate\Support\Facades\Input::get('endpoint', Config::get('explore.endpoint').$data['url']) }}" class="form-control" placeholder="Api Enpoint URL">
             </div>
         </div>
 
@@ -17,10 +17,10 @@
             @foreach ($data['parameter']['fields']['Parameter'] as $k => $param)
             <div class="form-group">
                 <div class="col-sm-3">
-                    <input type="text" name="fields[]" value="{{ Input::get('fields.'.$k, $param['field']) }}" class="form-control">
+                    <input type="text" name="fields[]" value="{{ Illuminate\Support\Facades\Input::get('fields.'.$k, $param['field']) }}" class="form-control">
                 </div>
                 <div class="col-sm-8">
-                    <input type="text" name="values[]" value="{{ Input::get('values.'.$k, array_get($param, 'value')) }}" class="form-control" placeholder="{{ strip_tags($param['description']) }}">
+                    <input type="text" name="values[]" value="{{ Illuminate\Support\Facades\Input::get('values.'.$k, array_get($param, 'value')) }}" class="form-control" placeholder="{{ strip_tags($param['description']) }}">
                 </div>
                 <div class="col-sm-1">
                     <a href="javascript:void(0)" class="remove-node" tabindex="-1"><span class="glyphicon glyphicon-minus"></span></a>
